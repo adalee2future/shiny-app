@@ -1,9 +1,9 @@
 library(shiny)
 library(datasets)
 
-# Define server logic required to summarize and view the selected
-# dataset
+# Define server logic required to investigate Central Limited Theorem
 
+# define some distributions
 binom <-  function(n){ 
         # The Binomial Distribution
         mu <<- .5; sigma <<- .5
@@ -50,22 +50,18 @@ unif <- function(n) {
 
 
 shinyServer(function(input, output) {
-        # Return the requested dataset
+        # Return the distribution random function
         distInput <- reactive({
                 switch(input$distribution, "Binomial" = binom, "Exponential" = exp,
                        "F" = f, "Logistic" = logis, "Poisson" = pois, "Student t" = t, "Uniform" = unif)
         })
         
-        # Generate a summary of the dataset
+        # Output the distribution
         output$distFunc <- renderPrint({
                 rdist <- distInput()
                 rdist
         })
         
-        # Show the first "n" observations
-        output$view <- renderTable({
-                head(distInput(), n = input$obs)
-        })
         
         # plot
         output$distPlot <- renderPlot({

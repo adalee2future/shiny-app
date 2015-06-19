@@ -1,6 +1,6 @@
 library(shiny)
 
-# Define UI for dataset viewer application
+# Define UI for Central Limited Theorem application
 shinyUI(fluidPage(
         
         # Application title
@@ -22,8 +22,6 @@ shinyUI(fluidPage(
                 # requested number of observations
                 mainPanel(
                         verbatimTextOutput("distFunc"),
-                        
-                        #tableOutput("view"),
                         
                         plotOutput("distPlot")
                 )
