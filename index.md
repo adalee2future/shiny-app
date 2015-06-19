@@ -26,46 +26,12 @@ mode        : selfcontained # {standalone, draft}
 
 ## Binomial Distribution Example
 
-```{r}
+
+```r
 binom <-  function(n){ rbinom(n, size = 1, prob = .5) } # The Binomial Distribution
 ```
 
-```{r echo=FALSE}
-# num = 1
-samples <- NULL
-num <- 1
-mu <- .5; sigma <- .5
-for (i in 1:1000) samples <- c(samples, mean(binom(num)))
-library(ggplot2)
-normalize_mean <- function(x, mu, sigma, n){sqrt(n) * (x - mu) / sigma}
-dat <- data.frame(
-        x = sapply(samples, normalize_mean, mu, sigma, n = num),
-        num = factor(rep(num, 1000)))
-g <- ggplot(dat, aes(x = x, fill = num)) + geom_histogram(binwidth=.3, colour = "black",
-                                                           aes(y = ..density..)) 
-g <- g + stat_function(fun = dnorm, size = 2)
-g1 <- g + facet_grid(. ~ num)
-
-# num = 40
-samples <- NULL
-num <- 40
-for (i in 1:1000) samples <- c(samples, mean(binom(num)))
-library(ggplot2)
-normalize_mean <- function(x, mu, sigma, n){sqrt(n) * (x - mu) / sigma}
-dat <- data.frame(
-        x = sapply(samples, normalize_mean, mu, sigma, n = num),
-        num = factor(rep(num, 1000)))
-                
-g <- ggplot(dat, aes(x = x, fill = num)) + geom_histogram(binwidth=.3, colour = "black",
-                                                           aes(y = ..density..)) 
-g <- g + stat_function(fun = dnorm, size = 2)
-g2 <- g + facet_grid(. ~ num)
-
-# plot two
-library(gridExtra)
-grid.arrange(g1, g2, ncol=2)
-
-```
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png) 
 
 ---
 
