@@ -22,6 +22,8 @@ mode        : selfcontained # {standalone, draft}
 
 * We create 1000 mean datas from specific distribution and see its normalized distribution in hist, we also plot a normal distribution curve to see how they are similar, when num = 1, this means we create 1000 random data from that distribution, when num = 40, this means we create 1000 random data mean of 40 data from that distribution.
 
+* [source code on Github](https://github.com/adalee2future/shiny-app)
+
 ---
 
 ## Binomial Distribution Example
